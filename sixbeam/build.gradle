@@ -1,0 +1,69 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.erpproject'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	//jpa annotation
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	//thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+	//spring web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	//junit
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//devtools
+//	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	implementation 'org.hibernate.validator:hibernate-validator'
+	//더미데이터를 위한 종속성 추가
+	implementation'javax.annotation:javax.annotation-api:1.3.2'
+	//스프링시큐리티(로그인기능)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'com.google.api-client:google-api-client:2.0.0'
+	implementation 'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
+	implementation 'com.google.apis:google-api-services-calendar:v3-rev20220715-2.0.0'
+}
+// '-parameters' 플래그를 추가하는 부분
+tasks.withType(JavaCompile) {
+	options.compilerArgs += ["-parameters"]
+}
+tasks.named('test') {
+	useJUnitPlatform()
+}
