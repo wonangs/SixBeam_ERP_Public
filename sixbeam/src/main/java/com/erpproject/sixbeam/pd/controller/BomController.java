@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +51,7 @@ public class BomController {
 
 
         bomService.readyBomForm(model);
-        return "/contents/pd/bom_form";
+        return "contents/pd/bom_form";
     }
 
     // 새 bom 작성
@@ -110,7 +111,7 @@ public class BomController {
         model.addAttribute("ritemEntities", ritemEntities);
 
         // 완품 리스트 뷰페이지 반환
-        return "/contents/pd/bom_list";
+        return "contents/pd/bom_list";
     }
 
     @GetMapping("/detail/{itemCd}")
@@ -132,6 +133,6 @@ public class BomController {
     public String updateBom(@ModelAttribute BomForm bomForm) {
 
         bomService.updateBomList(bomForm);
-        return "redirect:/pd/bom/bomlist";
+        return "redirect:pd/bom/bomlist";
     }
 }

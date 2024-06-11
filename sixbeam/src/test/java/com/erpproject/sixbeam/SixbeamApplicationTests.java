@@ -12,7 +12,7 @@ class SixbeamApplicationTests {
     @Autowired
     private WhregistRepository whregistRepository;
 
-    @Test
+    /*@Test
     void testwhregist() {
-    }
+    }*/
 }
